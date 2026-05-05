@@ -117,29 +117,29 @@
 <!-- Hero -->
 <section class="hero">
     <div class="hero-bg">
+        <canvas id="particleCanvas"></canvas>
         <div class="hero-orb o1"></div>
         <div class="hero-orb o2"></div>
-        <div class="hero-orb o3"></div>
     </div>
     <div class="container">
         <div class="row align-items-center g-5">
-            <div class="col-lg-6 hero-content">
+            <div class="col-lg-7 hero-content">
                 <div class="hero-badge">
-                    <span class="dot"></span> Enterprise-Grade Platform
+                    <span class="dot"></span> Next-Gen Enterprise Solution
                 </div>
-                <h1>Resolve Issues<br><span class="gradient">10x Faster.</span></h1>
-                <p class="hero-sub">The next generation complaint management system designed for modern enterprises. Track, assign, resolve — all in one premium dashboard.</p>
+                <h1>Empower Your Team.<br><span class="gradient">Resolve with Precision.</span></h1>
+                <p class="hero-sub">Experience the future of complaint management. High-performance tracking, intelligent analytics, and a premium interface designed for speed.</p>
                 <div class="hero-actions">
                     <a href="{% url 'register' %}" class="btn-hero primary">
-                        Get Started Free <i class="fas fa-arrow-right"></i>
+                        Join CMS Pro <i class="fas fa-bolt ms-2"></i>
                     </a>
                     <a href="{% url 'login' %}" class="btn-hero outline">
-                        <i class="fas fa-play"></i> Sign In
+                        View Demo <i class="fas fa-play-circle ms-2"></i>
                     </a>
                 </div>
             </div>
-            <div class="col-lg-6 hero-visual">
-                <div class="hero-card">
+            <div class="col-lg-5 hero-visual">
+                <div class="hero-card tilt-card">
                     <div class="d-flex align-items-center gap-2 mb-4">
                         <div style="width:12px;height:12px;border-radius:50%;background:#ef4444"></div>
                         <div style="width:12px;height:12px;border-radius:50%;background:#f59e0b"></div>
@@ -295,6 +295,47 @@
 </footer>
 
 <script>
+// Particle Background Logic
+const canvas = document.getElementById('particleCanvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+
+function initParticles() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    particles = [];
+    for(let i=0; i<80; i++) {
+        particles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            size: Math.random() * 2 + 1,
+            speedX: (Math.random() - 0.5) * 0.5,
+            speedY: (Math.random() - 0.5) * 0.5,
+            opacity: Math.random() * 0.5 + 0.2
+        });
+    }
+}
+
+function animateParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+        p.x += p.speedX;
+        p.y += p.speedY;
+        if(p.x < 0 || p.x > canvas.width) p.speedX *= -1;
+        if(p.y < 0 || p.y > canvas.height) p.speedY *= -1;
+        
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(99, 102, 241, ${p.opacity})`;
+        ctx.fill();
+    });
+    requestAnimationFrame(animateParticles);
+}
+
+window.addEventListener('resize', initParticles);
+initParticles();
+animateParticles();
+
 // Navbar scroll effect
 window.addEventListener('scroll',()=>{
     document.getElementById('hpNav').classList.toggle('scrolled',window.scrollY>50);
@@ -306,18 +347,40 @@ const observer=new IntersectionObserver((entries)=>{
 },{threshold:0.15});
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 
+// 3D Tilt Effect
+document.querySelectorAll('.tilt-card').forEach(card => {
+    card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = (y - centerY) / 10;
+        const rotateY = (centerX - x) / 10;
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+    });
+    card.addEventListener('mouseleave', () => {
+        card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+    });
+});
+
 // Counter animation
 const counters=document.querySelectorAll('.stat-num[data-count]');
 const counterObserver=new IntersectionObserver((entries)=>{
     entries.forEach(e=>{
         if(e.isIntersecting){
-            const target=parseInt(e.target.dataset.count);
+            const target=parseFloat(e.target.dataset.count);
             let current=0;
-            const increment=Math.max(1,Math.floor(target/40));
+            const increment=target / 50;
             const timer=setInterval(()=>{
                 current+=increment;
-                if(current>=target){current=target;clearInterval(timer)}
-                e.target.textContent=current;
+                if(current>=target){
+                    current=target;
+                    clearInterval(timer);
+                    e.target.textContent = target % 1 === 0 ? target : target.toFixed(1);
+                } else {
+                    e.target.textContent = Math.floor(current);
+                }
             },30);
             counterObserver.unobserve(e.target);
         }
