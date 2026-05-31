@@ -153,10 +153,20 @@
         const sidebar = document.getElementById('sidebar');
         
         if (sidebarToggle) {
-            sidebarToggle.addEventListener('click', () => {
+            sidebarToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
                 sidebar.classList.toggle('active');
             });
         }
+        
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 992 && sidebar.classList.contains('active')) {
+                if (!sidebar.contains(e.target) && e.target !== sidebarToggle) {
+                    sidebar.classList.remove('active');
+                }
+            }
+        });
         
         // Add active classes to sidebar links
         document.querySelectorAll('.nav-link').forEach(link => {

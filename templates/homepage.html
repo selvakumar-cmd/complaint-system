@@ -94,10 +94,11 @@
 
         @media(max-width:768px){
             .hero h1{letter-spacing:-1px}
-            .nav-links{display:none!important}
             .hero-visual{display:none}
         }
     </style>
+    <!-- Add bootstrap JS bundle for offcanvas -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
 
@@ -105,14 +106,38 @@
 <nav class="hp-nav" id="hpNav">
     <div class="container d-flex justify-content-between align-items-center">
         <a href="{% url 'homepage' %}" class="nav-brand">CMS<span>PRO</span></a>
-        <div class="d-flex align-items-center nav-links">
+        
+        <!-- Desktop Nav -->
+        <div class="d-none d-lg-flex align-items-center nav-links">
             <a href="#features">Features</a>
             <a href="#stats">Stats</a>
             <a href="{% url 'login' %}" class="btn-nav ms-3">Sign In <i class="fas fa-arrow-right ms-1 small"></i></a>
         </div>
-        <a href="{% url 'login' %}" class="btn-nav d-lg-none">Sign In</a>
+        
+        <!-- Mobile Nav Toggle -->
+        <div class="d-lg-none d-flex align-items-center gap-3">
+            <a href="{% url 'login' %}" class="btn-nav py-1 px-3" style="font-size: 0.85rem;">Sign In</a>
+            <button class="btn btn-link text-white p-0 border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu" aria-controls="mobileMenu">
+                <i class="fas fa-bars fa-lg"></i>
+            </button>
+        </div>
     </div>
 </nav>
+
+<!-- Mobile Offcanvas Menu -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel" style="background: var(--bg); border-left: 1px solid rgba(255,255,255,0.1);">
+    <div class="offcanvas-header border-bottom border-secondary">
+        <h5 class="offcanvas-title text-white font-weight-bold" id="mobileMenuLabel">CMS<span style="color:var(--primary)">PRO</span></h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body d-flex flex-column gap-3 mt-3">
+        <a href="#features" class="text-white text-decoration-none py-2" data-bs-dismiss="offcanvas" style="font-size: 1.1rem; font-weight: 600;"><i class="fas fa-bolt me-2 text-primary"></i> Features</a>
+        <a href="#stats" class="text-white text-decoration-none py-2" data-bs-dismiss="offcanvas" style="font-size: 1.1rem; font-weight: 600;"><i class="fas fa-chart-bar me-2 text-primary"></i> Stats</a>
+        <hr class="border-secondary my-2">
+        <a href="{% url 'login' %}" class="btn-nav text-center w-100" style="padding: 12px;">Sign In to Dashboard</a>
+        <a href="{% url 'register' %}" class="btn btn-outline-primary text-white w-100" style="padding: 12px; border-radius: 10px; font-weight: 700;">Create Account</a>
+    </div>
+</div>
 
 <!-- Hero -->
 <section class="hero">
