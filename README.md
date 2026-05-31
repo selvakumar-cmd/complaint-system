@@ -203,7 +203,7 @@ complaint-system/
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/SELVAKUMAR-ANALYST/complaint-system.git
+   git clone https://github.com/selvakumar-cmd/complaint-system.git
    cd complaint-system
    ```
 
@@ -247,14 +247,14 @@ complaint-system/
 ---
 
 ## 🤝 Contributing
-Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/SELVAKUMAR-ANALYST/complaint-system/issues).
+Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/selvakumar-cmd/complaint-system/issues).
 
 ---
 
 <div align="center">
   <p>Built with ❤️ by <strong>Selvakumar S</strong></p>
   <p>
-    <a href="https://github.com/SELVAKUMAR-ANALYST">
+    <a href="https://github.com/selvakumar-cmd">
       <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
     </a>
     &nbsp;
