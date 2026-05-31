@@ -95,6 +95,9 @@ else:
         }
     }
 
+import sys
+print("DEBUG_DATABASES:", DATABASES, file=sys.stderr)
+
 
 # Password validation
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
