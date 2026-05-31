@@ -4,3 +4,4 @@ pillow
 django-environ
 gunicorn
 whitenoise
+reportlab
