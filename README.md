@@ -10,12 +10,28 @@
     <img src="https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white" alt="Bootstrap" />
     <img src="https://img.shields.io/badge/Chart.js-FF6384?style=for-the-badge&logo=chartdotjs&logoColor=white" alt="Chart.js" />
     <img src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge" alt="License" />
+    <br />
+    <a href="https://cms-selva.vercel.app" target="_blank">
+      <img src="https://img.shields.io/badge/Live%20Demo-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Demo" />
+    </a>
+  </p>
+  <p>
+    <a href="https://cms-selva.vercel.app" target="_blank">
+      <strong>🚀 Live Demo: https://cms-selva.vercel.app</strong>
+    </a>
   </p>
 </div>
 
 ---
 
+## 🌐 Live Demo
+
+> **🚀 Deployed on Vercel:** [https://cms-selva.vercel.app](https://cms-selva.vercel.app)
+
+---
+
 ## 📖 Table of Contents
+- [Live Demo](#-live-demo)
 - [About the Project](#-about-the-project)
 - [Key Features](#-key-features)
 - [Screenshots](#-screenshots)
@@ -241,5 +257,10 @@ Contributions, issues, and feature requests are welcome! Feel free to check the 
     <a href="https://github.com/SELVAKUMAR-ANALYST">
       <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
     </a>
+    &nbsp;
+    <a href="https://cms-selva.vercel.app">
+      <img src="https://img.shields.io/badge/Live%20Demo-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Demo" />
+    </a>
   </p>
+  <p><strong>🌐 Live at: <a href="https://cms-selva.vercel.app">cms-selva.vercel.app</a></strong></p>
 </div>
