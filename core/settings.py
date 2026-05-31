@@ -83,7 +83,8 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-if env('DATABASE_URL', default=''):
+db_url = env('DATABASE_URL', default='')
+if db_url and (db_url.startswith('postgres://') or db_url.startswith('postgresql://')):
     DATABASES = {
         'default': env.db('DATABASE_URL')
     }
